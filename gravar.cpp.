@@ -1,0 +1,34 @@
+#include <iostream>
+#include <fstream>  // Para manipulação de arquivos
+#include <string>
+
+int main() {
+    std::string nome;
+    std::string numero;
+    
+    // Solicita o nome e o número ao usuário
+    std::cout << "Digite seu nome: ";
+    std::getline(std::cin, nome);  // Usa getline para permitir espaços no nome
+
+    std::cout << "Digite seu número: ";
+    std::getline(std::cin, numero);
+
+    // Abre o arquivo para escrita (ou cria um novo se não existir)
+    std::ofstream arquivo("dados.txt");
+
+    if (!arquivo) {
+        std::cerr << "Erro ao abrir o arquivo para escrita!" << std::endl;
+        return 1;  // Retorna um código de erro
+    }
+
+    // Escreve o nome e o número no arquivo
+    arquivo << "Nome: " << nome << std::endl;
+    arquivo << "Número: " << numero << std::endl;
+
+    // Fecha o arquivo
+    arquivo.close();
+
+    std::cout << "Dados gravados com sucesso no arquivo 'dados.txt'." << std::endl;
+
+    return 0;
+}
